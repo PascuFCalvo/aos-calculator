@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warhammer Damage Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>AOS DAMAGE</h1>
+        </div>
+        <div class="inputs-container">
+            <div class="attack-group">
+                <label for="attacks">ATAQUES:</label>
+                <div class="radio-container">
+                    <label for="normalAttacks">
+                        <input type="radio" id="normalAttacks" name="attacksDiceType" value="normal" checked> 1
+                    </label>
+                    <label for="d3Attacks">
+                        <input type="radio" id="d3Attacks" name="attacksDiceType" value="d3"> D3
+                    </label>
+                    <label for="d6Attacks">
+                        <input type="radio" id="d6Attacks" name="attacksDiceType" value="d6"> D6
+                    </label>
+                </div>
+                <input type="number" id="attacks" required>
+            </div>
+
+            <label for="toHit">HIT(n+):</label>
+            <input type="number" id="toHit" required>
+
+            <label for="toWound">WOUND(n+):</label>
+            <input type="number" id="toWound" required>
+
+            <label for="rend">REND:</label>
+            <input type="number" id="rend" required>
+
+            <label for="save">SAVE(n+):</label>
+            <input type="number" id="save">
+
+            <label for="ward">WARD(n+):</label>
+            <input type="number" id="ward">
+
+            <div class="damage-group">
+                <label for="damage">DAÑO:</label>
+                <div class="radio-container">
+                    <label for="fixedDamage">
+                        <input type="radio" id="fixedDamage" name="damageDiceType" value="fixed" checked> FIJO
+                    </label>
+                    <label for="d3Damage">
+                        <input type="radio" id="d3Damage" name="damageDiceType" value="d3"> D3
+                    </label>
+                    <label for="d6Damage">
+                        <input type="radio" id="d6Damage" name="damageDiceType" value="d6"> D6
+                    </label>
+                </div>
+                <input type="number" id="damage" required>
+            </div>
+        </div>
+        <h3>MODIFICADORES</h3>
+        <div class="modifiers">
+            <label for="autoWoundOnSix">
+                <input type="checkbox" id="autoWoundOnSix"> HIT(6) AUTOWOUND
+            </label>
+            <label for="doubleHitOnSix">
+                <input type="checkbox" id="doubleHitOnSix"> HIT(6) HITS x2
+            </label>
+            <label for="mortalWoundOnSix">
+                <input type="checkbox" id="mortalWoundOnSix"> WOUND(6) MORTAL ADICIONAL
+            </label>
+            <label for="mortalOnSix">
+                <input type="checkbox" id="mortalOnSix"> WOUND(6) MORTAL NO ADICIONAL
+            </label>
+            <h3>REROLLS</h3>
+            <label for="rerollOnesHit">
+                <input type="checkbox" id="rerollOnesHit"> REPETIR 1s AL HIT
+            </label>
+            <label for="rerollHits">
+                <input type="checkbox" id="rerollHits"> REPETIR HITS FALLIDOS
+            </label>
+            <label for="rerollOnesWound">
+                <input type="checkbox" id="rerollOnesWound"> REPETIR 1s AL WOUND
+            </label>
+            <label for="rerollWounds">
+                <input type="checkbox" id="rerollWounds"> REPETIR WOUNDS FALLIDOS
+            </label>
+        </div>
+        <div class="hundred">
+            <label for="simulateHundred">
+                <input type="checkbox" id="simulateHundred"> 100 TIRADAS
+            </label>
+        </div>
+        <button type="submit" id="calculateButton">Calcular Daño</button>
+        <div id="resultContainer" class="hidden">
+            <div id="result"></div>
+            <details id="rolls">
+                <summary>Resultados de las tiradas:</summary>
+                <div id="hitRolls"></div>
+                <div id="woundRolls"></div>
+                <div id="saveRolls"></div>
+                <div id="wardRolls"></div>
+            </details>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
